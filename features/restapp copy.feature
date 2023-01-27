@@ -18,15 +18,6 @@ Feature: Testing the REST application
                 | name |  description | price | _id |
                 | Test Name | Test Description | 9.99 | 1 |
 
-    Scenario Outline: User updating an item successfully
-        Given That a user is on the url "http://localhost:8080/index.html"
-        When The user enters the item _id "<_id>", name "<name>", description "<description>", and price "<price>" into the UPDATE section
-        And The user clicks the PUT button
-        Then The READ ALL section will populate with JSON containing _id "<_id>", name "<name>", description "<description>", and price "<price>"
-        Examples:
-                | name |  description | price | _id |
-                | Test Name | Test Description Updated | 19.99 | 1 |
-
     Scenario Outline: User deletes an item successfully
             Given That a user is on the url "http://localhost:8080/index.html"
             When The user enters the item _id "<_id>" into the DELETE section
@@ -34,5 +25,5 @@ Feature: Testing the REST application
             Then The READ ALL section will be empty
         Examples:
                 | name |  description | price | _id |
-                | Test Name | Test Description Updated | 19.99 | 1 |
+                | Test Name | Test Description | 9.99 | 1 |
     

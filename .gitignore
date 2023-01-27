@@ -136,3 +136,6 @@ data.db
 
 # pycharm
 .idea/
+
+# vscode settings
+.vscode

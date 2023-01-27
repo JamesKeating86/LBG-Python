@@ -42,7 +42,9 @@ def step_click_put_button(context):
 
 @when('The user clicks the DELETE button')
 def step_click_delete_button(context):
-    context.browser.find_element(By.ID, 'buttonDelete').click()
+    deleteButton = context.browser.find_element(By.ID, 'buttonDelete')
+    context.browser.execute_script("arguments[0].scrollIntoView();", deleteButton)
+    context.browser.execute_script("arguments[0].click()", deleteButton)
 
 @then('The READ ALL section will populate with JSON containing _id "{_id}", name "{name}", description "{description}", and price "{price}"')
 def step_check_for_created_item_json(context, _id, name, description, price):
@@ -63,4 +65,11 @@ def step_check_for_delete(context):
     expected = '[]'
     time.sleep(2)
     actual = context.browser.find_element(By.ID, 'singleOutput').text
+    assert_that(actual, equal_to(expected))
+
+@then('The READ ALL section will be empty')
+def step_check_for_delete_all(context):
+    expected = ''
+    time.sleep(2)
+    actual = context.browser.find_element(By.ID, 'listOutput').text
     assert_that(actual, equal_to(expected))
